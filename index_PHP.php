@@ -14,13 +14,13 @@ function convertirMetros($valor , $unidad_desde){
             return $valor * 100;
             break;
         case 'Decimetro':
-            return $Valor * 10;
+            return $valor * 10;
             break;
         case 'Metro':
            return $valor;
             break;
         case 'Decametro':
-            return $Valor / 10;
+            return $valor / 10;
             break;
         case 'Hectometro':
             return $valor / 100;
@@ -33,6 +33,15 @@ function convertirMetros($valor , $unidad_desde){
             break;
     }
 }
+
+if (isset($_POST["convertir"])){
+    //Obtenemos los valores
+    $valor = $_POST["valor"];
+    $desde = $_POST["desde"];
+    $calculoDesde = convertirMetros($valor,$desde);
+    $resultado = $calculoDesde;
+}   
+
 ?>
 
 
@@ -101,7 +110,9 @@ function convertirMetros($valor , $unidad_desde){
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="valor">RESULTADO: </label>
-                        <input type="text" name="resultado" class="form-control">
+                        <input type="text" name="resultado" class="form-control" value="<?php if (isset($resultado)) {
+                            echo $resultado;
+                        } ?>">
                     </div>
                 </div>
             </div>
