@@ -1,3 +1,41 @@
+<?php 
+//Variables
+$valor = "";
+$desde = "";
+$hasta = "";
+
+//Convertir a Metro
+function convertirMetros($valor , $unidad_desde){
+    switch($unidad_desde){
+        case 'Milimetro':
+            return $valor / 1000;
+            break;
+        case 'Centimetro':
+            return $valor * 100;
+            break;
+        case 'Decimetro':
+            return $Valor * 10;
+            break;
+        case 'Metro':
+           return $valor;
+            break;
+        case 'Decametro':
+            return $Valor / 10;
+            break;
+        case 'Hectometro':
+            return $valor / 100;
+            break;
+        case 'Kilometro':
+            return $valor / 1000;
+            break;
+        default:
+            return "Unidad de medida no soportada";
+            break;
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
