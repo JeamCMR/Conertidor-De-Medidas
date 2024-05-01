@@ -34,12 +34,42 @@ function convertirMetros($valor , $unidad_desde){
     }
 }
 
+function convertirDesdeHasta ($valor,$unidad_hasta){
+    switch($unidad_hasta){
+        case 'Milimetro':
+            return $valor / 1000;
+            break;
+        case 'Centimetro':
+            return $valor * 100;
+            break;
+        case 'Decimetro':
+            return $valor * 10;
+            break;
+        case 'Metro':
+           return $valor * 1;
+            break;
+        case 'Decametro':
+            return $valor / 10;
+            break;
+        case 'Hectometro':
+            return $valor / 100;
+            break;
+        case 'Kilometro':
+            return $valor / 1000;
+            break;
+        default:
+            return "Unidad de medida no soportada";
+    }
+}
+
 if (isset($_POST["convertir"])){
     //Obtenemos los valores
     $valor = $_POST["valor"];
     $desde = $_POST["desde"];
+    $hasta = $_POST["hasta"];
     $calculoDesde = convertirMetros($valor,$desde);
-    $resultado = $calculoDesde;
+    $calculoHasta = convertirDesdeHasta($calculoDesde,$hasta);
+    $resultadoDesdeHasta = number_format($calculoHasta, 2 );
 }   
 
 ?>
@@ -110,8 +140,8 @@ if (isset($_POST["convertir"])){
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="valor">RESULTADO: </label>
-                        <input type="text" name="resultado" class="form-control" value="<?php if (isset($resultado)) {
-                            echo $resultado;
+                        <input type="text" name="resultado" class="form-control" value="<?php if (isset($resultadoDesdeHasta ) ) {
+                            echo $resultadoDesdeHasta;
                         } ?>">
                     </div>
                 </div>
